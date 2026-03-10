@@ -2,7 +2,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { X } from "lucide-react";
 import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/nails-gel-tip.jpg";
+import gallery2 from "@/assets/nails-molde-f1.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 import gallery4 from "@/assets/gallery-4.jpg";
 import gallery5 from "@/assets/gallery-5.jpg";
