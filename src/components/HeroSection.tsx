@@ -1,29 +1,109 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import heroTexture from "@/assets/hero-texture.jpg";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useMemo, useCallback } from "react";
 
-const HeroSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+interface Particle {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  opacity: number;
+  fadeSpeed: number;
+}
+
+const PARTICLE_COUNT = 40;
+
+const ParticlesCanvas = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const particlesRef = useRef<Particle[]>([]);
+  const animRef = useRef<number>(0);
+
+  const createParticle = useCallback((w: number, h: number): Particle => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    size: Math.random() * 2 + 0.5,
+    speedX: (Math.random() - 0.5) * 0.3,
+    speedY: -Math.random() * 0.4 - 0.1,
+    opacity: Math.random() * 0.5 + 0.1,
+    fadeSpeed: Math.random() * 0.003 + 0.001,
+  }), []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    particlesRef.current = Array.from({ length: PARTICLE_COUNT }, () =>
+      createParticle(canvas.width, canvas.height)
+    );
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const particles = particlesRef.current;
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.opacity += p.fadeSpeed;
+        if (p.opacity > 0.6 || p.opacity < 0.05) p.fadeSpeed *= -1;
+        if (p.y < -10 || p.x < -10 || p.x > canvas.width + 10) {
+          particles[i] = createParticle(canvas.width, canvas.height);
+          particles[i].y = canvas.height + 10;
+        }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(10, 50%, 83%, ${p.opacity})`;
+        ctx.fill();
+      }
+      animRef.current = requestAnimationFrame(animate);
+    };
+    animate();
+
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      window.removeEventListener("resize", resize);
+    };
+  }, [createParticle]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Parallax background */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y: bgY }}
-      >
-        <img
-          src={heroTexture}
-          alt=""
-          className="w-full h-[115%] object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
-      </motion.div>
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full z-[2] pointer-events-none"
+    />
+  );
+};
+
+const HeroSection = () => {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Video background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover"
+          poster=""
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      {/* Rose gradient overlay */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-primary/20 via-background/60 to-background" />
+
+      {/* Particles */}
+      <ParticlesCanvas />
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
@@ -65,7 +145,7 @@ const HeroSection = () => {
             href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar um horário."
             target="_blank"
             rel="noopener noreferrer"
-            className="border-shimmer inline-block px-10 py-4 bg-background font-body text-sm tracking-[0.2em] uppercase text-primary transition-all duration-500 hover:bg-primary/10"
+            className="border-shimmer inline-block px-10 py-4 bg-background/80 backdrop-blur-sm font-body text-sm tracking-[0.2em] uppercase text-primary transition-all duration-500 hover:bg-primary/10"
           >
             Agende sua Transformação
           </a>
