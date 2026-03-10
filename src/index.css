@@ -108,7 +108,7 @@
   }
 
   .neon-border-hover:hover {
-    box-shadow: 0 0 1px hsla(180, 100%, 50%, 0.6), inset 0 0 15px hsla(43, 72%, 52%, 0.4);
+    box-shadow: 0 0 1px hsla(180, 100%, 50%, 0.6), inset 0 0 15px hsla(10, 50%, 83%, 0.4);
   }
 
   .jewel-glow:hover img {
