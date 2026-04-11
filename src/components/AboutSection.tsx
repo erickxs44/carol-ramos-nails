@@ -1,49 +1,76 @@
 import { motion } from "framer-motion";
-import carolPortrait from "@/assets/carol-portrait.jpg";
+import { FloatingPaths } from "@/components/ui/background-paths";
 
 const AboutSection = () => {
   return (
-    <section className="relative min-h-screen flex items-end overflow-hidden">
-      {/* Full background portrait */}
-      <motion.img
-        src={carolPortrait}
-        alt="Carol Ramos - Nail Designer"
-        className="absolute inset-0 w-full h-full object-cover object-top"
-        initial={{ opacity: 0, filter: "blur(10px)" }}
-        whileInView={{ opacity: 1, filter: "blur(0px)" }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-      />
+    <section className="relative py-24 sm:py-32 bg-white overflow-hidden" id="sobre">
+      {/* Animated Background Paths */}
+      <div className="absolute inset-0 z-0">
+        <FloatingPaths position={1} />
+        <FloatingPaths position={-1} />
+      </div>
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          
+          {/* Photos side */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="relative"
+          >
+            <div className="relative aspect-[4/5] rounded-tl-[80px] rounded-br-[80px] overflow-hidden shadow-2xl">
+              <img 
+                src="/gabi.jpg.jpeg" 
+                alt="Gabi Nails" 
+                className="w-full h-full object-cover object-top"
+                loading="lazy"
+                decoding="async"
+              />
+              {/* Leve gradiente sobre a foto */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-rose-500/20 to-transparent mix-blend-overlay" />
+            </div>
+            
+            {/* Decorative background element behind photo */}
+            <div className="absolute -z-10 -bottom-6 -right-6 w-full h-full border-2 border-primary/30 rounded-tl-[80px] rounded-br-[80px]" />
+          </motion.div>
 
-      {/* Glassmorphism text overlay */}
-      <motion.div
-        className="relative z-10 w-full p-6 sm:p-10 pb-16"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      >
-        <div className="glass-strong rounded-sm p-8 sm:p-12 max-w-2xl">
-          <p className="font-body text-sm tracking-[0.3em] uppercase rose-text mb-4">
-            A Especialista
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl font-light text-foreground mb-6">
-            Carol Ramos
-          </h2>
-          <p className="font-body text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
-            Referência em unhas de gel em Cerqueira César, Carol Ramos combina técnica apurada 
-            com um olhar artístico único. Cada trabalho é tratado como uma peça exclusiva, 
-            utilizando materiais europeus de primeira linha.
-          </p>
-          <p className="font-body text-sm sm:text-base text-muted-foreground leading-relaxed">
-            Com anos de especialização e centenas de clientes satisfeitas, sua técnica diferenciada 
-            garante naturalidade, durabilidade e um acabamento que é impossível de ignorar.
-          </p>
+          {/* Text side */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex flex-col justify-center bg-white/70 backdrop-blur-sm p-8 rounded-3xl"
+          >
+            <p className="font-body text-sm tracking-[0.3em] uppercase text-rose-600 font-semibold mb-4">
+              A Especialista
+            </p>
+            <h2 className="font-display text-4xl sm:text-5xl font-medium text-gray-900 mb-8">
+              Gabi Nails
+            </h2>
+            
+            <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
+              <p>
+                Especialista em unhas e com 2 anos de experiência na área, Gabi traz técnicas apuradas e um olhar artístico único, garantindo naturalidade e durabilidade. 
+              </p>
+              <p>
+                Seu trabalho é minucioso e dedicado, proporcionando a cada cliente um resultado impecável, que valoriza a beleza e realça o estilo individual de cada mulher.
+              </p>
+            </div>
+            
+            <div className="mt-10">
+              <div className="inline-flex items-center gap-3 border-b-2 border-rose-500 pb-2">
+                <span className="font-display text-3xl text-rose-500">2</span>
+                <span className="font-body text-sm tracking-widest uppercase text-gray-500">Anos de<br/>Experiência</span>
+              </div>
+            </div>
+          </motion.div>
+          
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

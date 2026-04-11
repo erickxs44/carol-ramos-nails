@@ -30,10 +30,10 @@ const DifferentialsSection = () => {
             <motion.div
               key={text}
               className="border-b border-border py-8 sm:py-10"
-              initial={{ opacity: 0, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, filter: "blur(0px)" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: i * 0.15, ease: "easeOut" }}
             >
               <h3 className="font-display text-2xl sm:text-4xl font-light gold-text text-center">
                 {text}

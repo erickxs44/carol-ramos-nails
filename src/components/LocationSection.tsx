@@ -22,13 +22,13 @@ const LocationSection = () => {
           {/* Map */}
           <motion.div
             className="rounded-sm overflow-hidden aspect-square md:aspect-auto md:h-[400px]"
-            initial={{ opacity: 0, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, filter: "blur(0px)" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: -100, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2!2d-46.66!3d-23.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzAwLjAiUyA0NsKwMzknMzYuMCJX!5e0!3m2!1spt-BR!2sbr!4v1"
+              src="https://maps.google.com/maps?q=Santa%20Cruz%20do%20Sul,%20RS&t=&z=13&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, filter: "invert(0.9) hue-rotate(180deg) saturate(0.3)" }}
@@ -42,16 +42,16 @@ const LocationSection = () => {
           {/* Info */}
           <motion.div
             className="glass p-8 sm:p-12 rounded-sm"
-            initial={{ opacity: 0, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, filter: "blur(0px)" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, x: 100, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
           >
             <div className="flex items-start gap-4 mb-8">
               <MapPin className="text-primary shrink-0 mt-1" size={20} />
               <div>
-                <p className="font-body text-foreground text-sm mb-1">Riachuelo 242</p>
-                <p className="font-body text-muted-foreground text-sm">Cerqueira César, São Paulo - SP</p>
+                <p className="font-body text-foreground text-sm mb-1">Santa Cruz do Sul</p>
+                <p className="font-body text-muted-foreground text-sm">Rio Grande do Sul - RS</p>
               </div>
             </div>
 
@@ -62,12 +62,12 @@ const LocationSection = () => {
               </div>
               <div>
                 <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Contato</p>
-                <p className="font-body text-sm text-foreground">WhatsApp · (11) 99999-9999</p>
+                <p className="font-body text-sm text-foreground">WhatsApp · (51) 99283-4194</p>
               </div>
             </div>
 
             <a
-              href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar um horário."
+              href="https://wa.me/5551992834194?text=Olá! Gostaria de agendar um horário."
               target="_blank"
               rel="noopener noreferrer"
               className="border-shimmer inline-block mt-10 px-8 py-3 bg-background font-body text-xs tracking-[0.2em] uppercase text-primary transition-all duration-500 hover:bg-primary/10"
