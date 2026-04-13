@@ -5,7 +5,6 @@ import Preloader from "@/components/Preloader";
 // Lazy-loading components naturally below the fold
 const AboutSection = React.lazy(() => import("@/components/AboutSection"));
 const GallerySection = React.lazy(() => import("@/components/GallerySection"));
-const TestimonialsSection = React.lazy(() => import("@/components/TestimonialsSection"));
 const DifferentialsSection = React.lazy(() => import("@/components/DifferentialsSection"));
 const LocationSection = React.lazy(() => import("@/components/LocationSection"));
 const FooterSection = React.lazy(() => import("@/components/FooterSection"));
@@ -26,7 +25,6 @@ const Index = () => {
       <Suspense fallback={<SectionSkeleton />}>
         <AboutSection />
         <GallerySection />
-        <TestimonialsSection />
         <DifferentialsSection />
         <LocationSection />
         <FooterSection />

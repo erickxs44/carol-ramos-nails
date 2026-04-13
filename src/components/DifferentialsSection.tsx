@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 const differentials = [
   "Durabilidade Extrema",
   "Naturalidade Absoluta",
-  "Matéria-Prima Européia",
   "Técnica Exclusiva",
   "Atendimento Premium",
 ];

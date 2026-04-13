@@ -46,25 +46,28 @@ const AboutSection = () => {
             className="flex flex-col justify-center bg-white/70 backdrop-blur-sm p-8 rounded-3xl"
           >
             <p className="font-body text-sm tracking-[0.3em] uppercase text-rose-600 font-semibold mb-4">
-              A Especialista
+              Sobre mim
             </p>
             <h2 className="font-display text-4xl sm:text-5xl font-medium text-gray-900 mb-8">
-              Gabi Nails
+              Gabriela
             </h2>
             
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
               <p>
-                Especialista em unhas e com 2 anos de experiência na área, Gabi traz técnicas apuradas e um olhar artístico único, garantindo naturalidade e durabilidade. 
+                Sou Gabriela, Nail Designer. Iniciei minha trajetória em 2025 e, desde então, venho me aperfeiçoando para oferecer não apenas unhas bonitas, mas uma experiência de cuidado, leveza e autoestima.
               </p>
               <p>
-                Seu trabalho é minucioso e dedicado, proporcionando a cada cliente um resultado impecável, que valoriza a beleza e realça o estilo individual de cada mulher.
+                Meu trabalho é feito com atenção aos detalhes, buscando sempre naturalidade, durabilidade e um resultado que valorize o estilo de cada cliente.
+              </p>
+              <p className="font-medium text-rose-600">
+                Seja bem-vinda — será um prazer cuidar de você.
               </p>
             </div>
             
             <div className="mt-10">
               <div className="inline-flex items-center gap-3 border-b-2 border-rose-500 pb-2">
-                <span className="font-display text-3xl text-rose-500">2</span>
-                <span className="font-body text-sm tracking-widest uppercase text-gray-500">Anos de<br/>Experiência</span>
+                <span className="font-display text-3xl text-rose-500">2025</span>
+                <span className="font-body text-sm tracking-widest uppercase text-gray-500">Início da<br/>Trajetória</span>
               </div>
             </div>
           </motion.div>

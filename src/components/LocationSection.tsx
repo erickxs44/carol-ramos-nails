@@ -28,7 +28,7 @@ const LocationSection = () => {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <iframe
-              src="https://maps.google.com/maps?q=Santa%20Cruz%20do%20Sul,%20RS&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Rua%20Dona%20Leopoldina%2C%20564%2C%20Santa%20Cruz%20do%20Sul%2C%20RS&t=&z=16&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, filter: "invert(0.9) hue-rotate(180deg) saturate(0.3)" }}
@@ -50,15 +50,16 @@ const LocationSection = () => {
             <div className="flex items-start gap-4 mb-8">
               <MapPin className="text-primary shrink-0 mt-1" size={20} />
               <div>
-                <p className="font-body text-foreground text-sm mb-1">Santa Cruz do Sul</p>
-                <p className="font-body text-muted-foreground text-sm">Rio Grande do Sul - RS</p>
+                <p className="font-body text-foreground text-sm mb-1">Rua Dona Leopoldina, 564</p>
+                <p className="font-body text-muted-foreground text-sm">Santa Cruz do Sul - RS</p>
               </div>
             </div>
 
             <div className="space-y-6">
               <div>
                 <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Horário</p>
-                <p className="font-body text-sm text-foreground">Seg - Sáb · 9h às 20h</p>
+                <p className="font-body text-sm text-foreground">Seg a sexta · 13:30 às 22:00</p>
+                <p className="font-body text-sm text-foreground">Sábado · 8:00 às 17:00</p>
               </div>
               <div>
                 <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">Contato</p>

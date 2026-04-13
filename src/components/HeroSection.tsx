@@ -1,5 +1,5 @@
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import { useEffect, useRef, useMemo, useCallback, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useCallback } from "react";
 
 interface Particle {
   x: number;
@@ -96,24 +96,7 @@ const ParticlesCanvas = () => {
   );
 };
 
-const words = [
-  "Unhas de Gel", 
-  "Alongamentos", 
-  "Spa dos Pés", 
-  "Blindagem", 
-  "Autoestima"
-];
-
 const HeroSection = () => {
-  const [wordIndex, setWordIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % words.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video background */}
@@ -127,7 +110,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover"
           poster=""
         >
-          <source src="/hero-bg.mp4" type="video/mp4" />
+          <source src="/hero2.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -145,30 +128,16 @@ const HeroSection = () => {
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Gabi Nails · Nail Designer
+          Gabi Jahn • NAIL DESIGNER
         </motion.p>
 
         <motion.h1
-          className="font-display text-5xl sm:text-7xl md:text-8xl font-medium leading-[1.1] mb-8 drop-shadow-sm flex flex-col items-center"
+          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-[1.1] mb-8 drop-shadow-sm text-gray-900"
           initial={{ opacity: 0, y: 50, filter: "blur(12px)", scale: 0.95 }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
           transition={{ duration: 1.2, delay: 0.6, ease: "easeOut" }}
         >
-          <span className="text-gray-900 block mb-2 sm:mb-4">A Elite em</span>
-          <div className="relative w-full h-[1.2em] overflow-visible">
-            <AnimatePresence mode="popLayout">
-              <motion.span
-                key={wordIndex}
-                initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -30, filter: "blur(8px)" }}
-                transition={{ duration: 0.6 }}
-                className="text-gradient-gold absolute left-0 right-0 mx-auto"
-              >
-                {words[wordIndex]}
-              </motion.span>
-            </AnimatePresence>
-          </div>
+          O cuidado que<br/>você merece
         </motion.h1>
 
         <motion.p
@@ -177,7 +146,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          O mais alto padrão em unhas e alongamentos de Santa Cruz do Sul, exclusivo para quem não aceita menos que a perfeição.
+          Unhas feitas com atenção aos detalhes,<br className="hidden sm:block" />
+          valorizando sua beleza natural.
         </motion.p>
 
         <motion.div
@@ -191,7 +161,7 @@ const HeroSection = () => {
             rel="noopener noreferrer"
             className="border-shimmer inline-block px-10 py-4 bg-background/80 backdrop-blur-sm font-body text-sm tracking-[0.2em] uppercase text-primary transition-all duration-500 hover:bg-primary/10"
           >
-            Agende sua Transformação
+            Agende seu horário
           </a>
         </motion.div>
       </div>
