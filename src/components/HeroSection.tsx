@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useCallback, useState } from "react";
+import { useEffect, useRef, useCallback } from "react";
 
 interface Particle {
   x: number;
@@ -97,40 +97,17 @@ const ParticlesCanvas = () => {
 };
 
 const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isVideoFading, setIsVideoFading] = useState(false);
-
-  const handleTimeUpdate = () => {
-    if (videoRef.current) {
-      const { currentTime, duration } = videoRef.current;
-      if (duration && duration - currentTime < 0.8) {
-        setIsVideoFading(true);
-      } else if (currentTime > 0.1 && currentTime < duration - 0.8) {
-        setIsVideoFading(false);
-      }
-    }
-  };
-
-  const handleEnded = () => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
-    }
-  };
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video background */}
-      <div className="absolute inset-0 z-0 opacity-80" style={{ backgroundColor: "#000" }}>
+      <div className="absolute inset-0 z-0">
         <video
-          ref={videoRef}
-          onTimeUpdate={handleTimeUpdate}
-          onEnded={handleEnded}
           autoPlay
           muted
+          loop
           playsInline
           preload="auto"
-          className={`w-full h-full object-cover transition-opacity duration-[800ms] ease-in-out ${isVideoFading ? 'opacity-0' : 'opacity-100'}`}
+          className="w-full h-full object-cover"
           poster=""
         >
           <source src="/hero2.mp4" type="video/mp4" />
