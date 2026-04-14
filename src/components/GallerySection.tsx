@@ -9,7 +9,7 @@ interface ServiceImage {
 }
 
 const services: ServiceImage[] = [
-  { src: "/fotos/alongamento.jpg.jpeg", title: "Alongamento" },
+  { src: "/fotos/alongamento-novo.jpg", title: "Alongamento" },
   { src: "/fotos/spa.jpg.jpeg", title: "Spa dos Pés" },
   { src: "/fotos/pedicure.jpg.jpeg", title: "Pedicure" },
   { src: "/fotos/blindagem.jpg.jpeg", title: "Blindagem" },
