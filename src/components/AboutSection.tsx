@@ -60,7 +60,7 @@ const AboutSection = () => {
                 Meu trabalho é feito com atenção aos detalhes, buscando sempre naturalidade, durabilidade e um resultado que valorize o estilo de cada cliente.
               </p>
               <p className="font-medium text-rose-600">
-                Seja bem-vinda — será um prazer cuidar de você.
+                Seja bem-vinda, será um prazer cuidar de você.
               </p>
             </div>
             
