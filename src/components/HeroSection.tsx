@@ -115,7 +115,7 @@ const HeroSection = () => {
       </div>
 
       {/* White gradient overlay to balance video visibility and text readability */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-white/10 via-white/30 to-background" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-white/5 via-white/10 to-background" />
 
       {/* Particles */}
       <ParticlesCanvas />
