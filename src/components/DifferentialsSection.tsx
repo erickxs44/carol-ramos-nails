@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 
 const differentials = [
-  "Durabilidade Extrema",
-  "Naturalidade Absoluta",
-  "Técnica Exclusiva",
+  "Durabilidade",
+  "Naturalidade",
+  "Técnica",
   "Atendimento Premium",
 ];
 
