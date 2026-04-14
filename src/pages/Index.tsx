@@ -23,9 +23,9 @@ const Index = () => {
       
       {/* Below the fold loads on-demand */}
       <Suspense fallback={<SectionSkeleton />}>
-        <AboutSection />
         <GallerySection />
         <DifferentialsSection />
+        <AboutSection />
         <LocationSection />
         <FooterSection />
         <WhatsAppButton />
